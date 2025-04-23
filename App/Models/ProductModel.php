@@ -10,8 +10,11 @@ class ProductModel {
     }
 
     public function getAllProducts() {
-        $stmt = $this->db->prepare("SELECT * FROM product ORDER BY ProductID ASC");
-        $stmt->execute();
+        $sql = "SELECT ProductID ,ProductName, Price, Image FROM product ORDER BY ProductID ASC";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(); // Execute the query
+        // $stmt = $this->db->prepare("SELECT * FROM product ORDER BY ProductID ASC");
+        
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

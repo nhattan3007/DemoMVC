@@ -43,7 +43,10 @@ $baseURL = $config['baseURL'];    // Lấy giá trị 'baseURL' từ mảng cấ
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <!-- <span class="badge bg-dark text-white ms-1 rounded-pill">0</span> -->
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">
+                                <?= array_sum(array_column($_SESSION['cart'] ?? [], 'quantity')) ?>
+                            </span>
                         </button>
                     </form>
                 </div>
