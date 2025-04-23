@@ -1,8 +1,8 @@
 <?php
 return array(
-    'base' => 's15/',
-    'baseURL' => 'http://localhost:8080/ss15/',
-    'assets' => '/ss15/assets',
+    'base' => 'mvcdemo/',
+    'baseURL' => 'http://localhost:8080/mvcdemo/',
+    'assets' => '/mvcdemo/assets',
     'db' => array(
         'host' => 'localhost',
         'name' => 'csdl01',
