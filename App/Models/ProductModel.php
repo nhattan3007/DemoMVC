@@ -23,5 +23,12 @@ class ProductModel {
         $stmt = $this->db->prepare($sql);
         $stmt -> execute([$productname, $price]);
     }
+
+    public function getProductById($productId) {
+        $sql = "SELECT * FROM product WHERE ProductID = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$productId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>
