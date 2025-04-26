@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $config = require "config.php";   // Tải mảng cấu hình từ file config.php
 $baseURL = $config['baseURL'];    // Lấy giá trị 'baseURL' từ mảng cấu hình
 ?>
@@ -38,7 +41,22 @@ $baseURL = $config['baseURL'];    // Lấy giá trị 'baseURL' từ mảng cấ
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                             </ul>
                         </li>
-                    </ul>
+                        </ul>
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= $_SESSION['username'] ?>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="#!"><?= $_SESSION['username'] ?></a></li>
+                                <li><a class="dropdown-item" href="#!">Lịch sử đơn hàng</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="<?= $baseURL ?>user/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    <?php else: ?>
+                        <a class="btn btn-outline-primary" href="<?= $baseURL ?>user/login">Login</a>
+                    <?php endif; ?>
                     <form action="<?= $baseURL . 'cart/index'?>" method="POST" class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
